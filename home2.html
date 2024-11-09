@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Parents in Sync</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Parents in Sync</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="home2.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login_register.php">login_register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="forum.php">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.php">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section class="site-introduction py-5 text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to Parents in Sync</h1>
+            <p class="lead">
+                Parents in Sync is a supportive community where new parents can connect, share experiences, and access resources. Our forum is open to both moms and dads, providing a space where every voice matters.
+            </p>
+            <a href="#forum" class="btn btn-primary mt-3">Join the Discussion</a>
+        </div>
+    </section>
+
+    <!-- Featured Threads Section -->
+    <section class="featured-forums py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Featured Latest Threads</h2>
+            <div class="row">
+                <!-- Thread 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="prettybaby.jpg" class="card-img-top" alt="Thread 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Overcoming Sleep Regressions: Tips for Parents</h5>
+                            <p class="card-text">Discover how to create a consistent sleep routine and improve your baby's sleep quality.</p>
+                            <a href="#thread-link" class="btn btn-outline-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thread 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="cryingbaby.jpg" class="card-img-top" alt="Thread 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Decoding Your Baby's Cries: A Guide to Understanding and Responding</h5>
+                            <p class="card-text">Learn about the different types of baby cries, common causes, and ways to soothe your baby. Join the conversation and share your experiences.</p>
+                            <a href="#thread-link" class="btn btn-outline-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thread 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="stressedparent.jpg" class="card-img-top" alt="Thread 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Navigating Postpartum Depression: A Guide to Seeking Help and Finding Support</h5>
+                            <p class="card-text">Learn about postpartum depression, its symptoms, and how to seek professional help.</p>
+                            <a href="#thread-link" class="btn btn-outline-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <form id="commentForm-<?php echo $story['story_id']; ?>" data-story-id="<?php echo $story['story_id']; ?>" style="display:none;">
+        <textarea name="comment_content" required placeholder="Add your comment here..."></textarea>
+        <button type="submit">Add Comment</button>
+    </form>
+</body>
+</html>
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light footer">
+    <div class="container">
+        <div class="text-center">
+            <p class="text-muted mb-0">&copy; 2024 Parents in Sync. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</html>

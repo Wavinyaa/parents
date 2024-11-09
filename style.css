@@ -1,0 +1,12 @@
+body {
+    background-image: url('mom\ and\ baby.jpg');
+    background-size: cover; /* This will make the background cover the entire page */
+    background-position: center; /* This centers the image */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+}
+
+/* Optional: If you want to darken the background for better text visibility */
+.site-introduction {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white; /* Text color */
+}

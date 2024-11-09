@@ -1,0 +1,72 @@
+<?php
+include 'db_connect.php'; // Database connection
+session_start();
+
+// Fetch stories from the database
+$sql = "SELECT * FROM parenting_stories";
+$stories_result = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parenting Stories</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h1>Parenting Stories</h1>
+
+<!-- Add a New Story Form -->
+<form method="POST" action="">
+    <h2>Add a New Story</h2>
+    <input type="text" name="title" placeholder="Story Title" required>
+    <textarea name="content" placeholder="Story Content" required></textarea>
+    <button type="submit" name="new_story">Add Story</button>
+</form>
+
+<?php
+// Add story to the database
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['new_story'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $user_id = $_SESSION['user_id'] ?? null; // Replace with actual user_id from session
+
+    if ($user_id) {
+        $stmt = $conn->prepare("INSERT INTO parenting_stories (title, content, user_id, created_at) VALUES (?, ?, ?, NOW())");
+        $stmt->bind_param("ssi", $title, $content, $user_id);
+
+        if ($stmt->execute()) {
+            echo "<p>Story added successfully!</p>";
+            header("Refresh:0"); // Refresh page to display new story
+        } else {
+            echo "<p>Error adding story: " . $stmt->error . "</p>";
+        }
+        $stmt->close();
+    } else {
+        echo "<p>You must be logged in to add a story.</p>";
+    }
+}
+?>
+
+<!-- Display Existing Stories -->
+<?php if ($stories_result && $stories_result->num_rows > 0): ?>
+    <?php while ($story = $stories_result->fetch_assoc()): ?>
+        <h3><?php echo htmlspecialchars($story['title']); ?></h3>
+        <p><?php echo htmlspecialchars($story['content']); ?></p>
+        <button onclick="viewComments(<?php echo $story['story_id']; ?>)">View Comments</button>
+
+        <!-- Comments Section -->
+        <div id="comments-<?php echo $story['story_id']; ?>" class="comments" style="display:none;"></div>
+
+        <!-- Add Comment Form -->
+        <form id="commentForm-<?php echo $story['story_id']; ?>" data-story-id="<?php echo $story['story_id']; ?>" style="display:none;">
+            <textarea name="comment_content" required placeholder="Add your comment here..."></textarea>
+            <button type="submit">Add Comment</button>
+        </form>
+    <?php endwhile; ?>
+<?php else: ?>
+    <p>No stories found.</p>
+<?php endif; ?>
+</body>
+</html>
